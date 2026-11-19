@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akademia Web - Ushtrim CSS</title>
+  <!-- Mënyra 3: skedari i jashtëm CSS (mënyra e rekomanduar) -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Mënyra 2: stil i brendshëm, vlen vetëm për këtë faqe (vetëm për provë) -->
+  <style>
+    .shenim-i-brendshem { color: tomato; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. SHIRITI I NAVIGIMIT: lista <ul> bëhet menu horizontale me flexbox -->
+  <nav class="menu">
+    <ul>
+      <li><a href="#tekst" class="aktiv">Tekst</a></li>
+      <li><a href="#ngjyra">Ngjyra</a></li>
+      <li><a href="#kutia">Kutia</a></li>
+      <li><a href="#tabela">Tabela</a></li>
+      <li><a href="#kurset">Kurset</a></li>
+      <li><a href="#fotot">Fotot</a></li>
+      <li><a href="#formulari">Formulari</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2. KOKA E FAQES: h1 stilizohet me font-size, font-weight, text-align -->
+  <header>
+    <h1>Akademia Web</h1>
+    <p class="nentitull">CSS e ndan përmbajtjen nga paraqitja</p>
+  </header>
+
+  <main>
+    <!-- 3. TEKSTI: vetitë e fontit dhe të tekstit -->
+    <section id="tekst" class="seksion">
+      <h2>Stilizimi i tekstit</h2>
+      <p>Ky paragraf përdor font-family, line-height dhe color nga body.</p>
+      <p class="shenim">Shënim: lexoni kapitullin 3</p>
+      <!-- Mënyra 1: inline me atributin style (shmangeni në praktikë) -->
+      <p style="color: green;">Ky tekst ka stil inline.</p>
+      <p class="shenim-i-brendshem">Ky tekst merr ngjyrën nga &lt;style&gt; në head.</p>
+
+      <!-- Specifikimi: id fiton mbi klasën, klasa fiton mbi elementin -->
+      <p id="fitues" class="humbes">Kush fiton? #id (blu) mbi .klasë (e kuqe).</p>
+    </section>
+
+    <!-- 4. NGJYRAT: e njëjta ngjyrë në katër formate -->
+    <section id="ngjyra" class="seksion">
+      <h2>Katër formatet e ngjyrës</h2>
+      <div class="ngjyrat">
+        <div class="kampion emer">tomato</div>
+        <div class="kampion hex">#ff6347</div>
+        <div class="kampion rgb">rgb(255, 99, 71)</div>
+        <div class="kampion hsl">hsl(9, 100%, 64%)</div>
+      </div>
+      <!-- Paleta HSL: ndryshon vetëm ndriçimi (L) -->
+      <div class="paleta">
+        <span class="l30">30%</span>
+        <span class="l45">45%</span>
+        <span class="l64">64%</span>
+        <span class="l80">80%</span>
+        <span class="l92">92%</span>
+      </div>
+    </section>
+
+    <!-- 5. MODELI I KUTISË: content, padding, border, margin -->
+    <section id="kutia" class="seksion">
+      <h2>Modeli i kutisë</h2>
+      <div class="kuti content-box">content-box: zë 350 px</div>
+      <div class="kuti border-box">border-box: zë 300 px</div>
+
+      <!-- Block, inline dhe inline-block -->
+      <h3>Block dhe inline</h3>
+      <div class="bllok">Unë jam block: zë gjithë rreshtin.</div>
+      <p>Ky është tekst me një <a href="#">lidhje</a> dhe një <b>fjalë</b> inline.</p>
+      <span class="etikete">HTML</span>
+      <span class="etikete">CSS</span>
+      <span class="etikete">JS</span>
+    </section>
+
+    <!-- 6. LISTAT DHE LIDHJET -->
+    <section class="seksion">
+      <h2>Lista dhe lidhje</h2>
+      <ul class="lista">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+      <ul class="pa-pika">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+      <!-- Lidhja ka katër gjendje: :link :visited :hover :active -->
+      <p><a href="https://www.realmadrid.com/en-US" class="lidhje">Lexo më shumë per Real Madrid</a></p>
+    </section>
+
+    <!-- 7. TABELA: border-collapse, zebra, hover -->
+    <section id="tabela" class="seksion">
+      <h2>Orari i kurseve</h2>
+      <table>
+        <tr><th>Kursi</th><th>Ditët</th><th>Çmimi</th></tr>
+        <tr><td>HTML bazë</td><td>E hënë</td><td>40 €</td></tr>
+        <tr><td>CSS</td><td>E mërkurë</td><td>50 €</td></tr>
+        <tr><td>JavaScript</td><td>E premte</td><td>60 €</td></tr>
+        <tr><td>Projekt final</td><td>E shtunë</td><td>30 €</td></tr>
+      </table>
+    </section>
+
+    <!-- 8. KARTAT: hije, transition, @keyframes, flex + gap -->
+    <section id="kurset" class="seksion">
+      <h2>Kurset tona</h2>
+      <div class="kartat">
+        <div class="karta">
+          <h3>Kursi CSS</h3>
+          <p>Mëso stilizimin e faqeve.</p>
+          <a href="#" class="btn">Regjistrohu</a>
+        </div>
+        <div class="karta">
+          <h3>Kursi HTML</h3>
+          <p>Ndërto strukturën e faqes.</p>
+          <a href="#" class="btn btn-portokalli">Regjistrohu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. FOTOGRAFITË: max-width, object-fit, border-radius, filter -->
+    <section id="fotot" class="seksion">
+      <h2>Stilizimi i fotografive</h2>
+
+      <!-- Foto e përgjegjshme: nuk del kurrë jashtë prindit -->
+      <img src="https://picsum.photos/id/1015/900/300" alt="Peizazh me lumë" class="foto-banner">
+
+      <!-- Galeria: të gjitha fotot kanë të njëjtën madhësi falë object-fit -->
+      <h3>Galeria</h3>
+      <div class="galeria">
+        <!-- <figure> + <figcaption>: foto me përshkrim poshtë -->
+        <figure class="foto-karta">
+          <img src="https://picsum.photos/id/1025/400/500" alt="Qen">
+          <figcaption>object-fit: cover</figcaption>
+        </figure>
+        <figure class="foto-karta">
+          <img src="https://picsum.photos/id/1043/600/300" alt="Qytet">
+          <figcaption>filter: grayscale (kalo sipër)</figcaption>
+        </figure>
+        <figure class="foto-karta">
+          <img src="https://picsum.photos/id/1080/500/500" alt="Luleshtrydhe">
+          <figcaption>transform: scale (kalo sipër)</figcaption>
+        </figure>
+      </div>
+
+      <!-- Avatari: border-radius 50% e bën foton rreth -->
+      <h3>Foto profili</h3>
+      <img src="https://picsum.photos/id/64/200/200" alt="Foto profili" class="avatar">
+
+      <!-- Foto si sfond: vendoset me CSS, jo me <img> -->
+      <h3>Foto si sfond</h3>
+      <div class="sfond-foto">
+        <p>Teksti mbi foto me background-image</p>
+      </div>
+    </section>
+
+    <!-- 10. FORMULARI: label, input, select, textarea, :focus -->
+    <section id="formulari" class="seksion">
+      <h2>Formulari i regjistrimit</h2>
+
+      <!-- action = ku dërgohen të dhënat; method = si dërgohen -->
+      <form class="formular" action="#" method="post">
+
+        <!-- for i <label> lidhet me id e <input>: klikimi te etiketa fokuson fushën -->
+        <label for="emri">Emri</label>
+        <input type="text" id="emri" name="emri" placeholder="p.sh. Arta" required>
+
+        <!-- type="email" kontrollon formatin; :invalid stilizon gabimin -->
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="emri@shembull.com" required>
+
+        <!-- <select>: listë me opsione -->
+        <label for="kursi">Kursi</label>
+        <select id="kursi" name="kursi">
+          <option>HTML bazë</option>
+          <option>CSS</option>
+          <option>JavaScript</option>
+        </select>
+
+        <!-- <fieldset> grupon fushat; <legend> është titulli i grupit -->
+        <fieldset>
+          <legend>Orari</legend>
+          <!-- radio: me të njëjtin name zgjidhet vetëm një -->
+          <label class="zgjedhje"><input type="radio" name="orari" checked> Paradite</label>
+          <label class="zgjedhje"><input type="radio" name="orari"> Pasdite</label>
+        </fieldset>
+
+        <!-- textarea: tekst me shumë rreshta -->
+        <label for="mesazhi">Mesazhi</label>
+        <textarea id="mesazhi" name="mesazhi" rows="4" placeholder="Shkruaj diçka..."></textarea>
+
+        <!-- checkbox: mund të zgjidhen disa njëherësh -->
+        <label class="zgjedhje"><input type="checkbox" name="kushtet" required> Pranoj kushtet</label>
+
+        <button type="submit" class="btn">Dërgo</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- 11. FUNDI I FAQES -->
+  <footer>info@akademiaweb.com</footer>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+/* ===== 0. RREGULLI CSS =====
+   selektori { vetia: vlera; }
+   Pa : ose ; shfletuesi e injoron deklaratën pa njoftim. */
+
+/* border-box për të gjitha elementet: width përfshin padding dhe border */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ===== 1. TEKSTI DHE BAZAT ===== */
+body {
+  margin: 0;                                    /* heq hapësirën anash */
+  font-family: "Segoe UI", Arial, sans-serif;   /* fonti rezervë; emri me hapësira shkon në thonjëza */
+  font-size: 16px;                              /* madhësia bazë */
+  line-height: 1.6;                             /* pa njësi = 1,6 × fonti */
+  color: #1f2328;                               /* ngjyra e tekstit (HEX) */
+  background-color: #f5f5f0;                    /* sfondi i faqes */
+}
+
+h1 {
+  font-size: 2rem;            /* 2rem = 32px (nga fonti i <html>) */
+  font-weight: 700;           /* i trashë */
+  letter-spacing: 1px;        /* hapësirë mes shkronjave */
+  color: #2965f1;
+  margin: 0 0 8px;            /* lart djathtas poshtë majtas */
+}
+
+h2 {
+  color: #2b3440;
+  border-bottom: 2px solid #d9dde3;   /* vijë poshtë titullit */
+  padding-bottom: 6px;
+}
+
+.nentitull {
+  font-style: italic;         /* shkronja të pjerrëta */
+  margin: 0;
+}
+
+p.shenim {
+  text-decoration: underline; /* nënvizim */
+  text-transform: uppercase;  /* shkronja të mëdha */
+  color: #5b6470;
+}
+
+/* Specifikimi: #id (100) fiton mbi .klasë (10), pavarësisht renditjes */
+#fitues { color: #2965f1; }
+.humbes { color: red; }
+
+/* ===== 2. NAVIGIMI ===== */
+.menu ul {
+  display: flex;              /* <li> pranë njëri-tjetrit */
+  gap: 8px;                   /* hapësirë mes lidhjeve */
+  list-style: none;           /* pa pika */
+  margin: 0;
+  padding: 8px 20px;
+  background: #1f2328;
+}
+
+.menu a {
+  display: block;             /* gjithë zona me padding klikohet */
+  padding: 10px 16px;
+  color: #ffffff;
+  text-decoration: none;      /* pa nënvizim */
+  border-radius: 6px;         /* kënde të buta */
+  transition: background-color 0.3s ease;  /* ndryshim i butë i ngjyrës */
+}
+
+/* :hover dhe .aktiv i tregojnë përdoruesit ku ndodhet */
+.menu a:hover,
+.menu a.aktiv {
+  background-color: #2965f1;
+}
+
+/* ===== 3. KOKA, SEKSIONET DHE FUNDI ===== */
+header,
+footer {
+  text-align: center;         /* tekst në qendër */
+  padding: 30px 20px;         /* vertikal | horizontal */
+  background-color: #ffffff;
+}
+
+.seksion {
+  max-width: 900px;
+  margin: 24px auto;          /* auto majtas e djathtas = në qendër */
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+/* ===== 4. NGJYRAT: katër formate, e njëjta ngjyrë ===== */
+.ngjyrat {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.kampion {
+  padding: 16px;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 6px;
+}
+
+.emer { background-color: tomato; }               /* emri i gatshëm */
+.hex  { background-color: #ff6347; }              /* RR GG BB në bazën 16 */
+.rgb  { background-color: rgb(255, 99, 71); }     /* e kuqe, e gjelbër, blu 0-255 */
+.hsl  { background-color: hsl(9, 100%, 64%); }    /* nuanca, ngopja, ndriçimi */
+
+/* Paleta: ndryshon vetëm L te hsl() */
+.paleta {
+  display: flex;
+  margin-top: 12px;
+}
+.paleta span {
+  flex: 1;                    /* të gjitha njësoj të gjera */
+  padding: 10px;
+  text-align: center;
+}
+.l30 { background: hsl(9, 100%, 30%); color: #ffffff; }
+.l45 { background: hsl(9, 100%, 45%); color: #ffffff; }
+.l64 { background: hsl(9, 100%, 64%); }
+.l80 { background: hsl(9, 100%, 80%); }
+.l92 { background: hsl(9, 100%, 92%); }
+
+/* ===== 5. MODELI I KUTISË ===== */
+.kuti {
+  width: 300px;
+  padding: 20px;              /* hapësira brenda kufirit */
+  border: 5px solid #2b3440;  /* trashësia, stili, ngjyra */
+  margin: 10px 0;             /* hapësira jashtë kufirit */
+  background: #d3f0e2;
+}
+
+/* content-box: 300 + 2×20 + 2×5 = 350 px */
+.content-box { box-sizing: content-box; }
+
+/* border-box: gjithsej 300 px, content zvogëlohet në 250 px */
+.border-box  { box-sizing: border-box; }
+
+/* Block zë gjithë rreshtin */
+.bllok {
+  display: block;
+  background: #eaf0fe;
+  padding: 8px;
+}
+
+/* inline-block: rri në rresht, por pranon width dhe padding */
+.etikete {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-right: 6px;
+  background: #2965f1;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+/* ===== 6. LISTAT DHE LIDHJET ===== */
+ul.lista {
+  list-style-type: square;    /* katrorë në vend të pikave */
+  padding-left: 20px;
+}
+
+ul.pa-pika {
+  list-style: none;           /* heq pikat */
+  padding: 0;
+  margin: 0;
+}
+
+/* Renditja LVHA (LoVe HAte): përndryshe :hover nuk punon te të vizituarat */
+a.lidhje:link    { color: #2965f1; }               /* e pavizituar */
+a.lidhje:visited { color: #7c3aed; }               /* e vizituar */
+a.lidhje:hover   { text-decoration: underline; }   /* kursori sipër */
+a.lidhje:active  { color: #e8590c; }               /* në çastin e klikimit */
+
+/* ===== 7. TABELA ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;  /* kufijtë e dyfishtë bëhen një vijë */
+}
+
+th,
+td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #d9dde3;   /* vijë vetëm poshtë rreshtave */
+}
+
+th {
+  background-color: #2965f1;
+  color: #ffffff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f4f7;  /* zebra: rreshtat çift 2, 4, 6 */
+}
+
+tr:hover {
+  background-color: #eaf0fe;  /* thekson rreshtin nën kursor */
+}
+
+/* ===== 8. KARTAT DHE ANIMACIONET ===== */
+
+/* @keyframes: animacion me hapa, nga i padukshëm në i dukshëm */
+@keyframes shfaqu {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.kartat {
+  display: flex;              /* kartat pranë njëra-tjetrës */
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.karta {
+  width: 280px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #d9dde3;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* rgba: e zezë me 10% dukshmëri */
+  animation: shfaqu 0.6s ease-out;            /* përdor @keyframes */
+  transition: transform 0.3s ease;            /* ngritje e butë */
+}
+
+.karta:hover {
+  transform: translateY(-5px);  /* animo transform dhe opacity: janë më të buta */
+}
+
+.btn { /* grupi 15:30 */
+  display: inline-block;        /* lidhja merr padding pa dalë nga rreshti */
+  padding: 10px 18px;
+  background: #2965f1;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background: #1a4fd0;          /* blu më e errët */
+  transform: translateY(-3px);
+}
+
+/* Variant i butonit me ngjyrë tjetër (detyra e pavarur) */
+.btn-portokalli { background: #e8590c; }
+.btn-portokalli:hover { background: #c2470a; }
+
+/* ===== 9. FOTOGRAFITË ===== */
+
+/* Rregulli bazë: foto nuk del jashtë prindit dhe ruan përpjesëtimin */
+img {
+  max-width: 100%;            /* jo më e gjerë se prindi */
+  height: auto;               /* lartësia ndjek gjerësinë */
+  display: block;             /* heq hapësirën e vogël poshtë fotos (inline) */
+}
+
+.foto-banner {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;          /* mbush kutinë pa e shtrembëruar foton, pret tepricën */
+  border-radius: 10px;
+}
+
+/* Galeria: kolona të barabarta me flex */
+.galeria {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;            /* në ekran të ngushtë kalojnë poshtë */
+}
+
+.foto-karta {
+  flex: 1 1 200px;            /* rritet, zvogëlohet, gjerësia nisëse 200px */
+  margin: 0;                  /* <figure> ka margin të paracaktuar */
+  overflow: hidden;           /* fsheh pjesën e fotos kur zmadhohet */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.foto-karta img {
+  width: 100%;
+  height: 180px;              /* e njëjta lartësi për fotot me përmasa të ndryshme */
+  object-fit: cover;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Foto e dytë: bardhezi, merr ngjyrë kur kalon kursori */
+.foto-karta:nth-child(2) img { filter: grayscale(100%); }
+.foto-karta:nth-child(2):hover img { filter: grayscale(0%); }
+
+/* Foto e tretë: zmadhohet; overflow: hidden e mban brenda kartës */
+.foto-karta:nth-child(3):hover img { transform: scale(1.1); }
+
+figcaption {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #5b6470;
+  text-align: center;
+}
+
+/* Avatari: gjerësi = lartësi + border-radius 50% = rreth */
+.avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #2965f1;
+}
+
+/* Foto si sfond: e përshtatshme kur sipër saj vendoset tekst */
+.sfond-foto {
+  height: 180px;
+  display: flex;              /* teksti në qendër horizontalisht dhe vertikalisht */
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-image: url("https://picsum.photos/id/1018/900/300");
+  background-size: cover;     /* si object-fit: cover, por për sfondin */
+  background-position: center;
+}
+
+.sfond-foto p {
+  margin: 0;
+  padding: 10px 18px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);   /* shtresë e errët që teksti të lexohet */
+  border-radius: 6px;
+}
+
+/* ===== 10. FORMULARI ===== */
+.formular {
+  max-width: 500px;
+}
+
+/* Etiketat mbi fushat */
+.formular label {
+  display: block;             /* label është inline, e kalojmë në rresht më vete */
+  margin: 12px 0 4px;
+  font-weight: 600;
+}
+
+/* Të gjitha fushat njësoj */
+.formular input[type="text"],
+.formular input[type="email"],
+.formular select,
+.formular textarea {
+  width: 100%;                /* falë border-box nuk del jashtë */
+  padding: 10px 12px;
+  font: inherit;              /* fushat nuk e trashëgojnë fontin vetvetiu */
+  border: 1px solid #c4cad3;
+  border-radius: 6px;
+  background: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formular textarea {
+  resize: vertical;           /* lejon zgjatje vetëm lart-poshtë */
+}
+
+/* :focus — fusha ku po shkruan përdoruesi */
+.formular input:focus,
+.formular select:focus,
+.formular textarea:focus {
+  outline: none;                              /* heqim kornizën e paracaktuar... */
+  border-color: #2965f1;
+  box-shadow: 0 0 0 3px rgba(41, 101, 241, 0.25);  /* ...dhe vendosim një më të dukshme */
+}
+
+/* ::placeholder — teksti ndihmës brenda fushës */
+.formular ::placeholder {
+  color: #9aa1ab;
+}
+
+/* :invalid — p.sh. email pa @; :not(:placeholder-shown) që të mos dalë e kuqe kur është bosh */
+.formular input:invalid:not(:placeholder-shown) {
+  border-color: #d63939;
+}
+
+.formular fieldset {
+  margin-top: 16px;
+  border: 1px solid #d9dde3;
+  border-radius: 6px;
+}
+
+.formular legend {
+  padding: 0 6px;
+  font-weight: 600;
+}
+
+/* Radio dhe checkbox: etiketa dhe kutia në të njëjtin rresht */
+.formular label.zgjedhje {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 16px;
+  font-weight: 400;
+}
+
+.formular input[type="radio"],
+.formular input[type="checkbox"] {
+  accent-color: #2965f1;      /* ngjyra e kutisë kur zgjidhet */
+}
+
+/* <button> nuk e ka fontin dhe kursorin e duhur vetvetiu */
+.formular button {
+  margin-top: 16px;
+  border: none;
+  font: inherit;
+  cursor: pointer;            /* dora te kursori */
+}
+
+footer {
+  color: #5b6470;
+  font-size: 14px;
+}
